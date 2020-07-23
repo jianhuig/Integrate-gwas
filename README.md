@@ -6,9 +6,9 @@ Here we use childhood asthma as an example. Following are detailed code and proc
 
 This GWAS result is perfomed by Nealelab based on UkBiobank data. See http://www.nealelab.is/uk-biobank.
 ```console
-~/$ wget https://www.dropbox.com/s/kp9bollwekaco0s/20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz?dl=0 -O 20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz
-~/$ rename 20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
-~/$ gunzip 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
+~$ wget https://www.dropbox.com/s/kp9bollwekaco0s/20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz?dl=0 -O 20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz
+~$ rename 20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
+~$ gunzip 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
 ```
 ## 2. QC control
 
