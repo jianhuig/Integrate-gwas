@@ -22,4 +22,5 @@ Unfortunately Eigen is not included in ANNOVAR by defualt, we need to download i
 ```shell
 tar xvfz annovar.latest.tar.gz 
 perl annotate_variation.pl -buildver hg19 -downdb -webfrom annovar -eigen humandb/
+perl annotate_variation.pl -filter asthma.variants.avinput humandb/ -dbtype eigen -build hg19
 ```
