@@ -14,3 +14,11 @@ This GWAS result is perfomed by Nealelab based on UkBiobank data. See http://www
 
 To accomodate availabity of meta function score Eigen, we excluded InDel variants and SNPs on X-chromosome. In addition, we excluded SNPs with minor allele 
 frequency less than 5%.
+
+## 3. Obatin Eigen score
+
+We use ANNOVAR to efficiently obatin Eigen scores on each SNP. ANNOVAR can be freely downloaded at http://download.openbioinformatics.org/annovar_download_form.php.
+Eigen is not included in ANNOVAR by defualt, we need
+```shell
+perl annotate_variation.pl -buildver hg19 -downdb -webfrom annovar -eigen humandb/
+```
