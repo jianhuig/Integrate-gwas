@@ -5,10 +5,10 @@ Here we use childhood asthma as an example. Following are detailed code and proc
 ## 1. Download GWAS summary statistics
 
 This GWAS result is perfomed by Nealelab based on UkBiobank data. See http://www.nealelab.is/uk-biobank.
-```console
-~$ wget https://www.dropbox.com/s/kp9bollwekaco0s/20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz?dl=0 -O 20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz
-~$ rename 20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
-~$ gunzip 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
+```shell
+wget https://www.dropbox.com/s/kp9bollwekaco0s/20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz?dl=0 -O 20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz
+rename 20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
+gunzip 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
 ```
 ## 2. QC control
 
@@ -18,7 +18,8 @@ frequency less than 5%.
 ## 3. Obatin Eigen score
 
 We use ANNOVAR to efficiently obatin Eigen scores on each SNP. ANNOVAR can be freely downloaded at http://download.openbioinformatics.org/annovar_download_form.php.
-Eigen is not included in ANNOVAR by defualt, we need
+Unfortunately Eigen is not included in ANNOVAR by defualt, we need to download it manually from ANNOVAR database.
 ```shell
+tar xvfz annovar.latest.tar.gz 
 perl annotate_variation.pl -buildver hg19 -downdb -webfrom annovar -eigen humandb/
 ```
