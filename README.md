@@ -10,4 +10,7 @@ $~/ wget https://www.dropbox.com/s/kp9bollwekaco0s/20002_1111.gwas.imputed_v3.bo
 $~/ rename 20002_1111.gwas.imputed_v3.both_sexes.tsv.bgz 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
 $~/ gunzip 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
 ```
+## 2. QC control
 
+To accomodate availabity of meta function score Eigen, we excluded InDel variants and SNPs on X-chromosome. In addition, we excluded SNPs with minor allele 
+frequency less than 5%.
