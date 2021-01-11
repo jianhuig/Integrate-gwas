@@ -1,6 +1,6 @@
 # Integration of Functional Annotation Score into GWAS
 
-Here we use childhood asthma as an example. Following are detailed code and procedure to integrate functional annotation score (Eigen) into GWAS. 
+Here we use childhood asthma as an example. Following are detailed code and procedure to integrate functional annotation score (CADD/Eigen) into GWAS. 
 
 ## 1. Download GWAS summary statistics
 
