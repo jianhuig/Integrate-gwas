@@ -15,7 +15,7 @@ gunzip 20002_1111.gwas.imputed_v3.both_sexes.tsv.gz
 To accomodate availabity of meta function score Eigen, we excluded InDel variants and SNPs on X-chromosome. In addition, we excluded SNPs with minor allele 
 frequency less than 5%.
 
-## 3. Obatin Eigen score
+## 3. Obatin CADD/Eigen score
 
 We use ANNOVAR to efficiently obatin Eigen scores on each SNP. ANNOVAR can be freely downloaded at http://download.openbioinformatics.org/annovar_download_form.php.
 Unfortunately Eigen is not included in ANNOVAR by defualt, we need to download it manually from ANNOVAR database.
@@ -24,3 +24,4 @@ tar xvfz annovar.latest.tar.gz
 perl annotate_variation.pl -buildver hg19 -downdb -webfrom annovar -eigen humandb/
 perl annotate_variation.pl -filter asthma.variants.avinput humandb/ -dbtype eigen -build hg19
 ```
+CADD score can be easily computed by running scripts from https://cadd.gs.washington.edu/download.
