@@ -25,3 +25,9 @@ perl annotate_variation.pl -buildver hg19 -downdb -webfrom annovar -eigen humand
 perl annotate_variation.pl -filter asthma.variants.avinput humandb/ -dbtype eigen -build hg19
 ```
 CADD score can be easily computed by running scripts from https://cadd.gs.washington.edu/download.
+
+## 4. Integration Methods
+
+Now your dataset should contain at least the following 7 columns "chr","pos","ref","alt","tstat","pval","Eigen/CADD".
+
+Function.R contains four integration methods: inverse-variance meta-analysis, Fisher's method, straitified FDR and weighted p-value approach.
