@@ -39,5 +39,5 @@ ii) negative values indicate "less deleterious" and therefore should have large 
 Instead we use an inverse-normal transformation of the raw annotation scores.
 
 ```r
-gwas$anno.pval <- INT(gwas$anno,gwas$tstat)
+gwas$anno.pval <- IVT(gwas$anno,gwas$tstat)
 ```
