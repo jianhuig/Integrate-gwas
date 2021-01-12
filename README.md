@@ -30,7 +30,7 @@ CADD score can be easily computed by running scripts from https://cadd.gs.washin
 
 Now your gwas dataset should contain at least the following 7 columns "chr","pos","ref","alt","tstat","pval","anno".
 
-[https://github.com/jianhuig/Integrate-gwas/blob/master/Function.R](Function.R) contains four integration methods: inverse-variance meta-analysis, Fisher's method, straitified FDR and weighted p-value approach. For meta-analysis and Fisher's method to run, we must obtain p-values for functional annotations scores. However, the functional annoations are 
+[Function.R](https://github.com/jianhuig/Integrate-gwas/blob/master/Function.R) contains four integration methods: inverse-variance meta-analysis, Fisher's method, straitified FDR and weighted p-value approach. For meta-analysis and Fisher's method to run, we must obtain p-values for functional annotations scores. However, the functional annoations are 
 
 i) not necessarily normal
 
