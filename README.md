@@ -42,6 +42,6 @@ Instead we use an inverse-normal transformation of the raw annotation scores.
 # Inverse-normal transformation
 gwas$anno.inv <- IVT(gwas$anno,gwas$tstat)
 
-# Meta Analsysi
+# Meta Analysis
 gwas$meta.p <- Meta(gwas$tstat, gwas$anno.inv)
 ```
