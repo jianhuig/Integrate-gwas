@@ -44,4 +44,7 @@ gwas$anno.inv <- IVT(gwas$anno,gwas$tstat)
 
 # Meta Analysis
 gwas$meta.p <- Meta(gwas$tstat, gwas$anno.inv)
+
+# Fisher
+gwas$fisher.p <- Fisher(gwas$pval, gwas$anno.inv)
 ```
