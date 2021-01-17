@@ -7,8 +7,8 @@ compute_pi0 <- function(m, pvalue,lambda=0.5){
   min(sum(pvalue>lambda)/(m*(1-lambda)),1)
 }
 
-# GWAS Simulation
-GWAS_simulation <- function(mu1, mu2, sd = 1, n = 100, random=FALSE, n.random=100) {
+# Independnet GWAS Signal Simulation
+GWAS_simulation <- function(mu1, mu2, sd = 1, n = 100, random=FALSE, n.random=100, sample_size = 10000) {
   # GWAS1
   z1 <-
     cbind(matrix(
@@ -17,25 +17,24 @@ GWAS_simulation <- function(mu1, mu2, sd = 1, n = 100, random=FALSE, n.random=10
       nrow = rep
     ),
     matrix(
-      rnorm((10000-n) * rep, mean = 0, sd = 1),
+      rnorm((sample_size-n) * rep, mean = 0, sd = 1),
       byrow = T,
       nrow = rep
     ))
-  # Randomly shuffle
-  #z1 <- t(apply(z1, 1, sample))
+  # Randomly shuffle 
   if (random){
-    z1[,(101-n.random):10^4] <- t(apply(z1[,(101-n.random):10^4], 1, sample))
+    z1[,(n+1-n.random):sample_size] <- t(apply(z1[,(n+1-n.random):sample_size], 1, sample))
   }
   
   # GWAS2
   z2 <-
     cbind(matrix(
-      rnorm(100 * rep, mean = mu2, sd = 1),
+      rnorm(n * rep, mean = mu2, sd = 1),
       byrow = T,
       nrow = rep
     ),
     matrix(
-      rnorm(9900 * rep, mean = 0, sd = 1),
+      rnorm((sample_size-n) * rep, mean = 0, sd = 1),
       byrow = T,
       nrow = rep
     ))
@@ -55,7 +54,7 @@ rank.def <- function(x){
 }
 
 Baseline <- function(x){
-  q <-qvalue(x, pi0 = 0.99)$qvalue # compute q-value
+  q <-qvalue(x)$qvalue # compute q-value
   q.rank <- rank.def(q)
   return(c(rej(x[1:100],5e-6),rej(q.rank[1:100], 100),
          rej(q[1:100], 0.05),rej(q[1:100], 0.2),mean(q.rank[1:ntrue])))
