@@ -3,7 +3,7 @@ library(qvalue)
 
 pvalue <- function(x){return(2*pnorm(-abs(x)))}
 
-IVT <- function(anno,tstat,k=3/8){
+INT <- function(anno,tstat,k=3/8){
 	sorted <-  sort(anno, decreasing = T,index.return=T)
 	n = length(anno)
 	p.sorted <- (seq(1:n)-k)/(n-2*k+1) # default k = 3/8, Bloom offset
