@@ -27,7 +27,7 @@ Fisher <- function(pval, anno){
 }
 
 # sFDR
-sFDR <- function(pval, anno, c = 0.05, gamma = 0.05){
+sFDR <- function(pval, anno, c = 0.05, gamma = 0.05, number_of_bins = 2){
 	p.sfdr <- pval
 	n <- length(pval)
 	index1 <- which(anno < c)
