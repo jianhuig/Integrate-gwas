@@ -49,7 +49,7 @@ gwas$meta.p <- Meta(gwas$tstat, gwas$anno.inv)
 gwas$fisher.p <- Fisher(gwas$pval, gwas$anno.inv)
 
 # sFDR
-gwas$sfdr.p <- sFDR(gwas$pval, gwas$anno, c=0.05, gamma=0.05)
+gwas$sfdr.p <- sFDR(gwas$pval, gwas$anno, c=0.05, gamma=0.05,nbins=2)
 
 # wFDR
 gwas$wfdr.p <- wFDR(gwas$pval, gwas$anno)
