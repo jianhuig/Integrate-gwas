@@ -6,3 +6,7 @@ To emperically evaluate FWER of weighted p-value approach and sFDR, we simulate 
 wget http://tcag.ca/documents/tools/omni25_indep.tar.gz
 tar -xzvf 
 ```
+```r
+library(bigsnpr)
+rds <- snp_readBed("indep.bed")
+```
