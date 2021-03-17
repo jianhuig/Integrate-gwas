@@ -4,7 +4,7 @@ To emperically evaluate FWER of weighted p-value approach and sFDR, we simulate 
 
 # Data Preparation
 
-We obtain pre-cleaned 1000 Genome Project PLINK file for indepdent samples from \hyper{http://tcag.ca/tools/1000genomes.html}{Center}
+We obtain pre-cleaned 1000 Genome Project PLINK file for indepdent samples from [The Center for Applied Genomics at Sickkids](http://tcag.ca/tools/1000genomes.html)
 
 ```console
 wget http://tcag.ca/documents/tools/omni25_indep.tar.gz
