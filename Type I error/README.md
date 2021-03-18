@@ -34,3 +34,4 @@ write.table(sum_stat, gz1, row.names=F, quote=F, sep= " ")
 close(gz1)
 }
 ```
+# FINDOR
