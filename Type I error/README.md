@@ -38,5 +38,8 @@ close(gz1)
 
 You will need [ldsc](https://github.com/bulik/ldsc) and [findor](https://github.com/gkichaev/FINDOR).
 ```console
-
+for i in summary_statistics/*.gz
+do
+	sbatch --export=file=$i ldsc.sh
+done
 ```
