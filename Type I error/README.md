@@ -27,7 +27,9 @@ id <- intersect(sum_stat$SNP, cadd$rsid) # only 545028 SNPs left
 sum_stat <- sum_stat %>% filter(SNP %in% id)
 
 # simulate 1000 sets
-for ( i in 1:1000){
+cl <- parallel::makeCluster(detectCores()-1)
+doParallel::registerDoParallel(cl)
+foreach(i = 1:1000,.packages=c("dplyr")) %dopar% {
 sum_stat <- sum_stat %>% mutate(Z = rnorm(nrow(sum_stat)))
 gz1 <- gzfile(paste0("summary_statistics/1kg_sim",i,".tsv.gz"), "w")
 write.table(sum_stat, gz1, row.names=F, quote=F, sep= " ")
