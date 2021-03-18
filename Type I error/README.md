@@ -6,7 +6,7 @@ To emperically evaluate FWER of weighted p-value approach and sFDR, we simulate 
 
 We obtain pre-cleaned 1000 Genome Project PLINK file for indepdent samples from [The Center for Applied Genomics at Sickkids](http://tcag.ca/tools/1000genomes.html)
 
-```console
+```shell
 wget http://tcag.ca/documents/tools/omni25_indep.tar.gz
 tar -xzvf 
 ```
@@ -37,7 +37,7 @@ close(gz1)
 # FINDOR
 
 You will need [ldsc](https://github.com/bulik/ldsc) and [findor](https://github.com/gkichaev/FINDOR).
-```console
+```shell
 for i in summary_statistics/*.gz
 do
 	sbatch --export=file=$i ldsc.sh
