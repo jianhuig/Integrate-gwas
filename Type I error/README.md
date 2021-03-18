@@ -45,3 +45,33 @@ do
 	sbatch --export=file=$i ldsc.sh
 done
 ```
+# Type I error evaluation
+```r
+library(data.table)
+library(dplyr)
+cl <- parallel::makeCluster(detectCores()-1)
+doParallel::registerDoParallel(cl)
+load("~/cadd.RData")
+files <- list.files(path="~/summary_statistics/" ,pattern = "[.]reweighted$",full.names=TRUE)
+result <- foreach(.packages = c("dplyr","qvalue"), i = files,.combine=rbind ,.export='fread',.errorhandling='pass') %dopar%{
+    gwas <- fread(i) %>% rename(rsid = SNP)
+    gwas <- gwas %>% left_join(cadd, by = 'rsid') %>% select(P, P_weighted, PHRED)
+    gwas <- gwas %>% mutate(v = pnorm(PHRED-2)) %>% mutate(w = v/mean(v)) %>% mutate(pwfdr = P / w) %>% select(-v,-w)
+    size = 2
+    gwas$group <- with(gwas, cut(PHRED, breaks=quantile(PHRED, probs=c(0,0.05,1)), na.rm=TRUE, include.lowest=TRUE, labels=c(1:2)))
+    gwas <- gwas %>% group_by(group) %>% mutate(q=qvalue(P)$qval)
+    alpha = rep(0, size)
+    m <- sapply(levels(gwas$group),function(x) nrow(gwas %>% filter(group == x) %>% filter(q < 0.05)))
+    if(sum(m)==0){wei = rep(1,size) # unweighted case
+    }else{
+    	 index <- which(as.numeric(m)>0)
+    	 alpha[index] <- sapply(levels(gwas$group)[index],function(x) max(gwas %>% filter(group == x) %>% filter(q < 0.05) %>% ungroup() %>% select(P)))
+    	 alpha_bar <- sum(m*alpha)/sum(m)
+    	 wei <- alpha/alpha_bar
+    }
+    gwas <- gwas %>% mutate(p.sfdr = P/wei[as.numeric(group)]) %>% ungroup()
+	p.bon <- 0.05/nrow(gwas)
+	c(sum(gwas$P_weighted < p.bon), sum(gwas$pwfdr < p.bon), sum(gwas$p.sfdr < p.bon))
+	rm(gwas)
+}
+```
