@@ -35,3 +35,8 @@ close(gz1)
 }
 ```
 # FINDOR
+
+You will need [ldsc](https://github.com/bulik/ldsc) and [findor](https://github.com/gkichaev/FINDOR).
+```console
+
+```
