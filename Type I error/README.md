@@ -15,6 +15,7 @@ tar -xzvf
 ```r
 library(bigsnpr)
 library(dplyr)
+library(doParallel)
 
 # read PLINK file into R
 snp_readBed("indep.bed")
