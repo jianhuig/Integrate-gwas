@@ -4,11 +4,15 @@ To emperically evaluate FWER of weighted p-value approach and sFDR, we simulate 
 
 # Data Preparation
 
-We obtain pre-cleaned 1000 Genome Project PLINK file for indepdent samples from [The Center for Applied Genomics at Sickkids](http://tcag.ca/tools/1000genomes.html)
+We obtain the genotypes from UKBB data.
 
 ```shell
-wget http://tcag.ca/documents/tools/omni25_indep.tar.gz
-tar -xzvf 
+# Download .bim file
+wget  -nd  biobank.ctsu.ox.ac.uk/ukb/ukb/auxdata/ukb_snp_bim.tar
+tar -xvf ukb_snp_bim.tar
+
+# Download .bed file per chromosome
+
 ```
 
 
